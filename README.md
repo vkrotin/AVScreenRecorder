@@ -1,5 +1,5 @@
 # AVScreenRecorder
-iOS library for screen recording app. Record any actions in the app, the option to save to device or share it. The ability to edit video (crop, trim to length, remove sound)
+iOS library for screen recording app. Record any actions in the app, the option to save on device or share it. The ability to edit video (crop, trim to length, remove sound)
 
 ## How to install
 
