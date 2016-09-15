@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'AVScreenRecorder_Example' do
+  pod 'AVScreenRecorder', :path => '../'
+
+  target 'AVScreenRecorder_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
