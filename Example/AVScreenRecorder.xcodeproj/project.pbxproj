@@ -37,7 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		195C0ECBB01AA9EB12E44E0E /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		341E78342E256913B3C73C91 /* Pods-AVScreenRecorder_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVScreenRecorder_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVScreenRecorder_Tests/Pods-AVScreenRecorder_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* AVScreenRecorder_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVScreenRecorder_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -64,10 +63,8 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		878F212DCF43E2CB1787642A /* Pods_AVScreenRecorder_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVScreenRecorder_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BABC19DA09D95AEF97709647 /* Pods_AVScreenRecorder_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVScreenRecorder_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DCBD0E34A67A973DBD1C2DBE /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		E18DBBCD1850A80E76C0566A /* Pods-AVScreenRecorder_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVScreenRecorder_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVScreenRecorder_Tests/Pods-AVScreenRecorder_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		EA15EFB2721CD8C4F6012F45 /* Pods-AVScreenRecorder_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVScreenRecorder_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVScreenRecorder_Example/Pods-AVScreenRecorder_Example.release.xcconfig"; sourceTree = "<group>"; };
-		F2F8F15FFB209D8F474EB51C /* AVScreenRecorder.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = AVScreenRecorder.podspec; path = ../AVScreenRecorder.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +96,6 @@
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
-				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for AVScreenRecorder */,
 				6003F5B5195388D20070C39A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
@@ -175,16 +171,6 @@
 				606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
-			isa = PBXGroup;
-			children = (
-				F2F8F15FFB209D8F474EB51C /* AVScreenRecorder.podspec */,
-				DCBD0E34A67A973DBD1C2DBE /* README.md */,
-				195C0ECBB01AA9EB12E44E0E /* LICENSE */,
-			);
-			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
 		728E2458EE9F40C6E89B36EC /* Pods */ = {
