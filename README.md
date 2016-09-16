@@ -9,8 +9,11 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Usege
-```ruby
+## Usage
+```objective-c
+#import <AVScreenRecorder/AVScreenRecorder.h>
+
+...
 // Start Record
   [[AVScreenRecorder sharedRecorder] startRecordCompletion:^(BOOL complete, NSError *error){
       // do something out code
