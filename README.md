@@ -1,6 +1,5 @@
 # AVScreenRecorder
 
-[![CI Status](http://img.shields.io/travis/Aleksey Anisimov/AVScreenRecorder.svg?style=flat)](https://travis-ci.org/Aleksey Anisimov/AVScreenRecorder)
 [![Version](https://img.shields.io/cocoapods/v/AVScreenRecorder.svg?style=flat)](http://cocoapods.org/pods/AVScreenRecorder)
 [![License](https://img.shields.io/cocoapods/l/AVScreenRecorder.svg?style=flat)](http://cocoapods.org/pods/AVScreenRecorder)
 [![Platform](https://img.shields.io/cocoapods/p/AVScreenRecorder.svg?style=flat)](http://cocoapods.org/pods/AVScreenRecorder)
