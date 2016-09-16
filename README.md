@@ -9,9 +9,21 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+## Usege
+```ruby
+// Start Record
+  [[AVScreenRecorder sharedRecorder] startRecordCompletion:^(BOOL complete, NSError *error){
+      // do something out code
+  }];
+// Stop Record
+  [[AVScreenRecorder sharedRecorder] stopRecordCompletion:^(BOOL complete, NSError *error){
+      // do something out code
+  }];
+```
+
 ## Requirements
 
-## Installation
+## Installation Pods
 
 AVScreenRecorder is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
@@ -19,6 +31,10 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "AVScreenRecorder"
 ```
+
+## Other installation way
+
+Add AVScreenRecorder.framework to your Framework.
 
 ## Author
 
