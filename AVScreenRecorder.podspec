@@ -1,5 +1,6 @@
 
 Pod::Spec.new do |s|
+
   s.name             = 'AVScreenRecorder'
   s.version          = '0.1.0'
   s.summary          = 'iOS library for screen recording app. Record any actions in the app, the option to save on device or share it.'

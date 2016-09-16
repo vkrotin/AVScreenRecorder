@@ -1,0 +1,16 @@
+PODS:
+  - AVScreenRecorder (0.1.0)
+
+DEPENDENCIES:
+  - AVScreenRecorder (from `../`)
+
+EXTERNAL SOURCES:
+  AVScreenRecorder:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AVScreenRecorder: bad1eef03241706a8ec5a77bc85d506efe17b2a1
+
+PODFILE CHECKSUM: 723ef94ba675f3a4d9b49efc77f4cffb57d9b7b3
+
+COCOAPODS: 1.1.0.rc.2

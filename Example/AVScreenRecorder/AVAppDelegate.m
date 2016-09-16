@@ -7,6 +7,7 @@
 //
 
 #import "AVAppDelegate.h"
+#import <AVScreenRecorder/AVScreenRecorder.h>
 
 @implementation AVAppDelegate
 
