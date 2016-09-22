@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name             = 'AVScreenRecorder'
-  s.version          = '0.1.4'
+  s.version          = '0.1.5'
   s.summary          = 'iOS library for screen recording app. Record any actions in the app, the option to save on device or share it.'
   s.homepage         = 'https://github.com/vkrotin/AVScreenRecorder'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
