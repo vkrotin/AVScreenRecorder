@@ -1,0 +1,6 @@
+framework module AVScreenRecorder {
+  umbrella header "AVScreenRecorder.h"
+
+  export *
+  module * { export * }
+}
