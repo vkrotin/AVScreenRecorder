@@ -33,7 +33,7 @@ AVScreenRecorder is available through [CocoaPods](http://cocoapods.org). To inst
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "AVScreenRecorder"
+pod 'AVScreenRecorder' 
 ```
 
 ## Other installation way
