@@ -1,0 +1,11 @@
+framework module CRUploadLib {
+  umbrella header "CRUploadLib.h"
+
+  export *
+  module * { export * }
+}
+
+module CRUploadLib.Swift {
+    header "CRUploadLib-Swift.h"
+    requires objc
+}

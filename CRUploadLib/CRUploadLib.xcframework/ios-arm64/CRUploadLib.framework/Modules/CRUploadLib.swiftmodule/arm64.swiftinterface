@@ -1,0 +1,286 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)
+// swift-module-flags: -target arm64-apple-ios14.1 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CRUploadLib
+import AVKit
+@_exported import CRUploadLib
+import CommonCrypto
+import CoreData
+import Foundation
+import MobileCoreServices
+import PhotosUI
+import Swift
+import UIKit
+public protocol SyncUploadProtocol {
+  typealias ProgressBlock = (Swift.Float, Swift.String) -> Swift.Void
+  typealias CompletionBlock = (Swift.String, CRUploadLib.ServerError?) -> Swift.Void
+  var progress: Self.ProgressBlock? { get set }
+  var completion: Self.CompletionBlock? { get set }
+}
+public protocol UploadServiceDelegate : AnyObject {
+  func uploadProgress(file: CRUploadLib.CRUploadFile, progress: Swift.Float, textProgress: Swift.String)
+  func uploadFinish(file: CRUploadLib.CRUploadFile)
+}
+public struct CRUploadFile : CRUploadLib.HeadFileProtocol {
+  public var checksum: Swift.String?
+  public var uid: Swift.String?
+  public var metadata: CRUploadLib.HeadMetadata?
+  public let isFinished: Swift.Bool?
+  public let id: Swift.String
+  public var size: Swift.UInt64
+  public var mimeType: Swift.String
+  public let uploadRanges: [[Swift.UInt64]]
+  public var lastPosition: Swift.UInt64 {
+    get
+  }
+  public var fileSizeString: Swift.String {
+    get
+  }
+  public var localPath: Swift.String {
+    get
+  }
+  public var localPathURL: Foundation.URL? {
+    get
+  }
+  public var localName: Swift.String {
+    get
+  }
+  public var thumbImage: UIKit.UIImage? {
+    get
+  }
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct ServerError {
+  public var title: Swift.String?
+  public var code: Swift.Int
+  public var errorDescription: Swift.String {
+    get
+  }
+  public var failureReason: Swift.String? {
+    get
+  }
+}
+public enum CRUploadType : Swift.Int {
+  case sync, asyncBlock, asyncThread
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class UploadSettings {
+  public static let shared: CRUploadLib.UploadSettings
+  public func update(thread: Swift.Int, chunkSize: Swift.Float, uploadType: CRUploadLib.CRUploadType)
+  public var numberThread: Swift.Int
+  public var chunkSize: Swift.UInt64 {
+    get
+  }
+  public var chunkSizeMb: Swift.Float {
+    get
+  }
+  public var uploadType: CRUploadLib.CRUploadType
+  public var chunkSizeString: Swift.String {
+    get
+  }
+  @objc deinit
+}
+public protocol FetchServiceDelegate : AnyObject {
+  func addNew(_ file: CRUploadLib.CRUploadFile)
+  func remove(fileId: Swift.String?)
+  func syncAllUploads(files: [CRUploadLib.CRUpload])
+}
+public protocol FetchServiceProtocol {
+  typealias InfoBlock = (CRUploadLib.CRUploadFile?) -> Swift.Void
+  func getInfo(by id: Swift.String?, completion: @escaping Self.InfoBlock)
+  func syncAllUploads()
+  func remove(_ file: CRUploadLib.CRUpload)
+  func addNew(_ file: CRUploadLib.HeadFile)
+  func addNew(with url: Foundation.URL?, fileName: Swift.String)
+  func updateInfo(_ file: CRUploadLib.CRUploadFile, _ progress: Swift.Float, _ text: Swift.String?)
+}
+@_hasMissingDesignatedInitializers public class SyncArray<T> where T : Swift.Equatable {
+  public func append(_ newElement: T)
+  public func remove(_ element: T)
+  public var count: Swift.Int {
+    get
+  }
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class CRUpload : CoreData.NSManagedObject {
+  @objc @NSManaged dynamic public var fileHash: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var fileId: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var dataRanges: Foundation.Data {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var localName: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var mimeType: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var size: Swift.Int64 {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var type: Swift.Int16 {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var progress: Swift.Float {
+    @objc get
+    @objc set
+  }
+  @objc @NSManaged dynamic public var textProgress: Swift.String {
+    @objc get
+    @objc set
+  }
+  @nonobjc public class func fetchAll() -> CoreData.NSFetchRequest<CRUploadLib.CRUpload>
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+extension CRUpload {
+  public var sizeUInt64: Swift.UInt64 {
+    get
+    set
+  }
+  public var localPath: Foundation.URL? {
+    get
+  }
+  public var thubm: UIKit.UIImage? {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class CRSetting {
+  public var mainUrlString: Swift.String
+  public var port: Swift.Int
+  public var sheme: Swift.String
+  public static let shared: CRUploadLib.CRSetting
+  public func update(mainURL: Swift.String, port: Swift.Int, sheme: Swift.String)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class CRAlertView {
+  public static func showAlert(on viewController: UIKit.UIViewController, _ fileId: Swift.String, _ image: UIKit.UIImage? = nil)
+  @objc deinit
+}
+public protocol UploadManagerProtocol : CRUploadLib.FetchMethods, CRUploadLib.SyncUploadProtocol, CRUploadLib.UploadMethods {
+}
+public protocol FetchMethods {
+  associatedtype ThumbBlock
+  func addNew(media url: Foundation.URL?, thumbImage: Self.ThumbBlock?)
+  func addNew(with url: Foundation.URL?, fileName: Swift.String)
+  func remove(_ id: Swift.String, _ localName: Swift.String)
+  func remove(_ file: CRUploadLib.CRUploadFile)
+  func fetch()
+}
+public protocol UploadMethods {
+  associatedtype PauseBlock
+  func startUpload(with file: CRUploadLib.CRUploadFile)
+  func startUpload(with file: CRUploadLib.CRUpload)
+  func pauseOrResume(_ id: Swift.String, completion: Self.PauseBlock?)
+}
+public protocol CRDataSourceDelegate : CRUploadLib.FetchServiceDelegate {
+}
+public protocol CRUploadDelegate : CRUploadLib.UploadServiceDelegate {
+}
+@_hasMissingDesignatedInitializers public class UploadManager : CRUploadLib.UploadManagerProtocol {
+  public typealias ThumbBlock = (CRUploadLib.HeadFile, Foundation.URL?, UIKit.UIImage?) -> Swift.Void
+  public typealias PauseBlock = () -> Swift.Void
+  public static let shared: CRUploadLib.UploadManager
+  weak public var dataSource: CRUploadLib.CRDataSourceDelegate?
+  weak public var delegate: CRUploadLib.CRUploadDelegate?
+  public var progress: CRUploadLib.UploadManager.ProgressBlock? {
+    get
+    set
+  }
+  public var completion: CRUploadLib.UploadManager.CompletionBlock? {
+    get
+    set
+  }
+  @objc deinit
+}
+extension UploadManager {
+  public func registerBackgroundTask()
+  public func endBackgroundTask()
+}
+extension UploadManager {
+  public func addNew(media url: Foundation.URL?, thumbImage: CRUploadLib.UploadManager.ThumbBlock? = nil)
+  public func addNew(with url: Foundation.URL?, fileName: Swift.String)
+  public func remove(_ id: Swift.String, _ localName: Swift.String)
+  public func remove(_ file: CRUploadLib.CRUploadFile)
+  public func fetch()
+}
+extension UploadManager {
+  public func startUpload(with file: CRUploadLib.CRUploadFile)
+  public func startUpload(with file: CRUploadLib.CRUpload)
+  public func pauseOrResume(_ id: Swift.String, completion: CRUploadLib.UploadManager.PauseBlock?)
+}
+extension UploadManager : CRUploadLib.FetchServiceDelegate {
+  public func remove(fileId: Swift.String?)
+  public func addNew(_ file: CRUploadLib.CRUploadFile)
+  public func syncAllUploads(files: [CRUploadLib.CRUpload])
+}
+extension UploadManager : CRUploadLib.UploadServiceDelegate {
+  public func uploadProgress(file: CRUploadLib.CRUploadFile, progress: Swift.Float, textProgress: Swift.String)
+  public func uploadFinish(file: CRUploadLib.CRUploadFile)
+}
+extension String {
+  public func replace(_ pattern: Swift.String, replacement: Swift.String) throws -> Swift.String
+  public func substring(using range: Foundation.NSRange) -> Swift.String?
+  @inlinable public func contains<T>(anyOf sequence: T) -> Swift.Bool where T : Swift.Sequence, T.Element : Swift.StringProtocol {
+        return sequence.contains(where: { self.contains($0) })
+    }
+  public var isURI: Swift.Bool {
+    get
+  }
+  public static func fileSize(_ fileSize: Swift.UInt64) -> Swift.String
+  public static let numberFormatter: Foundation.NumberFormatter
+  public var floatValue: Swift.Float {
+    get
+  }
+}
+public protocol MediaPickerProtocol {
+  associatedtype Block
+  func present(in controller: UIKit.UIViewController, _ completion: Self.Block?)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class MediaPicker : ObjectiveC.NSObject, CRUploadLib.MediaPickerProtocol, UIKit.UINavigationControllerDelegate {
+  public typealias Block = (Foundation.URL?) -> Swift.Void
+  public static let share: CRUploadLib.MediaPicker
+  public func present(in controller: UIKit.UIViewController, _ completion: CRUploadLib.MediaPicker.Block? = nil)
+  @objc deinit
+}
+extension MediaPicker : PhotosUI.PHPickerViewControllerDelegate {
+  public func picker(_ picker: PhotosUI.PHPickerViewController, didFinishPicking results: [PhotosUI.PHPickerResult])
+}
+public protocol HeadFileProtocol : Swift.Decodable, Swift.Encodable {
+  var checksum: Swift.String? { get set }
+  var uid: Swift.String? { get set }
+  var mimeType: Swift.String { get set }
+  var size: Swift.UInt64 { get set }
+  var metadata: CRUploadLib.HeadMetadata? { get set }
+}
+public struct HeadFile : CRUploadLib.HeadFileProtocol {
+  public var checksum: Swift.String?
+  public var mimeType: Swift.String
+  public var size: Swift.UInt64
+  public var metadata: CRUploadLib.HeadMetadata?
+  public var uid: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct HeadMetadata : Swift.Codable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension CRUploadLib.ServerError : Foundation.LocalizedError {}
+extension CRUploadLib.CRUploadType : Swift.Equatable {}
+extension CRUploadLib.CRUploadType : Swift.Hashable {}
+extension CRUploadLib.CRUploadType : Swift.RawRepresentable {}
